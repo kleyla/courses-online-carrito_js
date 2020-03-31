@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  background: url(./imgs/full-bloom.png);
+  background-attachment: fixed;
+}
+:root {
+  --primary: #2a3964;
+  --secondary: #880000;
+}
+.header {
+  width: 100%;
+  height: 80px;
+  padding: 10px 0;
+  background-color: var(--primary);
+}
+.container {
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.four-columns {
+  width: 40%;
+}
+.two-columns {
+  width: 20%;
+}
+.logo {
+  width: 80px;
+  height: auto;
+}
+ul {
+  text-decoration: none;
+}
+.submenu {
+  position: relative;
+}
+.submenu img {
+  width: 50px;
+  height: auto;
+}
+.submenu #carrito {
+  display: none;
+}
+.submenu:hover #carrito {
+  display: block;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  z-index: 1;
+  min-height: 400px;
+  min-width: 300px;
+}
+.btn-vaciar {
+  position: absolute;
+  left: 2%;
+  right: 2%;
+  bottom: 10px;
+  width: 96%;
+  text-align: center;
+  background: var(--secondary);
+  color: #fff;
+  font-weight: bold;
+  padding: 5px;
+}
+table {
+  padding: 2px;
+  display: block;
+}
+table thead {
+  display: block;
+  width: 100%;
+  border-bottom: solid #000;
+  padding: 5px;
+}
+table thead tr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+table thead tr th {
+}
+#imagen {
+  background-image: url(./imgs/hero.jpg);
+  height: 350px;
+  background-attachment: fixed;
+}
+.contenido-imagen {
+  margin: 80px;
+  /* background: red; */
+}
+.contenido-imagen h2 {
+  color: #fff;
+  font-size: 50px;
+}
+.contenido-imagen p {
+  color: #fff;
+  margin: 10px 0;
+}
+.search {
+  height: 50px;
+  border-radius: 5%;
+  padding: 5px;
+}
+.barra {
+  background-color: var(--secondary);
+  color: #fff;
+}
+.lista-cursos {
+  width: 80%;
+  margin: 10px 10%;
+}
+.encabezado {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 40px;
+}
+.card {
+  width: 90%;
+  margin: 10px 0;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5%;
+  box-shadow: 5px 5px #ccc;
+}
+.imagen-curso {
+  width: 100%;
+}
+.btn-al-carrito {
+  width: 90%;
+  display: block;
+  background: var(--primary);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  margin: 10px 5%;
+}
+.btn-al-carrito:hover {
+  background: var(--secondary);
+}
+
+.footer {
+  width: 100%;
+  height: 300px;
+  background: var(--secondary);
+  color: #fff;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+.enlace {
+  color: #fff;
+}
