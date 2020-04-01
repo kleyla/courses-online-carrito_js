@@ -10,6 +10,7 @@ function cargarEventListeners() {
 
   carrito.addEventListener("click", eliminarCurso);
   vaciarCarritoBtn.addEventListener("click", vaciarCarrito);
+  document.addEventListener("DOMContentLoaded", leerLocalStorage);
 }
 
 function comprarCursos(e) {
@@ -48,13 +49,18 @@ function insertarCarrito(curso) {
 
   `;
   listaCursos.appendChild(row);
+  guardarCursoLocalStorage(curso);
 }
 function eliminarCurso(e) {
   e.preventDefault();
   //   console.log("eliminado");
+  let curso, cursoId;
   if (e.target.classList.contains("borrar-curso")) {
     console.log(e.target.parentElement.parentElement.remove());
+    curso = e.target.parentElement.parentElement;
+    cursoId = curso.querySelector("a").getAttribute("data-id");
   }
+  eliminarCursoLS(cursoId);
 }
 function vaciarCarrito(e) {
   e.preventDefault();
@@ -62,4 +68,53 @@ function vaciarCarrito(e) {
   while (listaCursos.firstChild) {
     listaCursos.removeChild(listaCursos.firstChild);
   }
+  vaciarLocalStorage();
+  return false;
+}
+function guardarCursoLocalStorage(curso) {
+  //   console.log(curso);
+  let cursos = obtenerCursosLocalStorage();
+  cursos.push(curso);
+  localStorage.setItem("cursos", JSON.stringify(cursos));
+  console.log(localStorage.getItem("cursos"));
+}
+function obtenerCursosLocalStorage() {
+  let cursosLS;
+  if (localStorage.getItem("cursos") === null) {
+    cursosLS = [];
+  } else {
+    cursosLS = JSON.parse(localStorage.getItem("cursos"));
+  }
+  return cursosLS;
+}
+function leerLocalStorage() {
+  let cursos = obtenerCursosLocalStorage();
+  cursos.forEach(function(curso) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        <img src="${curso.imagen}" width="100px">
+      </td>
+      <td>${curso.titulo}</td>
+      <td>${curso.precio}</td>
+      <td>
+          <a href="" class="borrar-curso" data-id="${curso.id}" >X</a>
+      </td>
+    `;
+    listaCursos.appendChild(row);
+  });
+}
+function eliminarCursoLS(cursoId) {
+  let cursos = obtenerCursosLocalStorage();
+
+  cursos.forEach(function(curso, index) {
+    if (curso.id === cursoId) {
+      cursos.splice(index, 1);
+      //   console.log("holi");
+    }
+  });
+  localStorage.setItem("cursos", JSON.stringify(cursos));
+}
+function vaciarLocalStorage() {
+  localStorage.clear();
 }
